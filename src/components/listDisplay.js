@@ -4,25 +4,37 @@ import '../App.css';
 
 function ListDisplay(props) {
 
+    const [updater, setUpdater] = useState(true);
+
 
     function switchStatus(item) {
-
+        
         if(item.status){
             item.status = false;
         } else {
             item.status = true;
         }
-        localStorage.setItem("listData", JSON.stringify(props.list));
+        if(updater) {
+            setUpdater(false);
+        } else {
+            setUpdater(true);
+        }
     }
 
-    const list = props.list.map((item, index) => 
-        <li key={index} onClick={() => switchStatus(item, list)} className={item.status ? 'yes' : 'no'}>
-            {item.text}
-        </li>
-    );
+    useEffect(() => {
+        localStorage.setItem("listData", JSON.stringify(props.list));
+    }, [switchStatus]);
+
 
     return(
-        <ul>{list}</ul>
+        <ul>
+        {props.list.map((item, index) =>
+            <li key={index} onClick={() => switchStatus(item, props.list)} className={item.status ? 'yes' : 'no'}>
+                {item.text}
+            </li>
+        )}
+
+        </ul>
     );
 }
 
