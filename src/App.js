@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className="App">
-        <Input />
+        <Input list={list} listSetter={setList}/>
         <ListDisplay list={list} />
     </div>
   );
