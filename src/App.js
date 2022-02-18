@@ -6,9 +6,8 @@ import ListDisplay from './components/listDisplay';
 
 function App() {
   
-  const initial = ["yes", "test", "eeee"];
 
-  const [list, setList] = useState(initial);
+  const [list, setList] = useState([]);
 
   return (
     <div className="App">

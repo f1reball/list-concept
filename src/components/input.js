@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-function Input() {
-
+function Input(props) {
     const [data, setData] = useState("");
 
     function handleChange(e) {
@@ -10,16 +9,15 @@ function Input() {
 
     function handleSubmit(e) {
         e.preventDefault();
-
         if(data !== "") {
-            console.log(data);
+            props.listSetter(props.list.concat(data));
             setData("");
         }
     }
 
     return(
         <div>
-            <h1>hello</h1>
+            <h1>Enter Text</h1>
             <form onSubmit={handleSubmit}>
                 <input type="text" onChange={handleChange} value={data}></input> 
             </form>
