@@ -10,7 +10,7 @@ function Input(props) {
     function handleSubmit(e) {
         e.preventDefault();
         if(data !== "") {
-            props.listSetter(props.list.concat(data));
+            props.listSetter(props.list.concat({"text": data, "status": 0}));
             setData("");
         }
     }
