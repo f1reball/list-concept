@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("listData", JSON.stringify(list));
-  }, [list]);
+  });
 
 function reset() {
   setList([]);

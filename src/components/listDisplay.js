@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-function listDisplay(props) {
+import '../App.css';
+
+function ListDisplay(props) {
+
 
     function switchStatus(item) {
-        if(item.status === 0){
-            item.status = 1;
+
+        if(item.status){
+            item.status = false;
         } else {
-            item.status = 0;
+            item.status = true;
         }
+        localStorage.setItem("listData", JSON.stringify(props.list));
     }
 
     const list = props.list.map((item, index) => 
-        <li key={index} onClick={() => switchStatus(item)}>
+        <li key={index} onClick={() => switchStatus(item, list)} className={item.status ? 'yes' : 'no'}>
             {item.text}
         </li>
     );
@@ -21,4 +26,4 @@ function listDisplay(props) {
     );
 }
 
-export default listDisplay;
+export default ListDisplay;
