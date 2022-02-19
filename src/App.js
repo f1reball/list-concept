@@ -22,9 +22,11 @@ function reset() {
 
   return (
     <div className="App">
-      <button onClick={reset}>Reset</button> 
-        <Input list={list} listSetter={setList}/>
+      <div className='AppWrapper'>
+        <Input list={list} listSetter={setList} />
         <ListDisplay list={list} />
+        <button onClick={reset}>Reset</button>
+      </div>
     </div>
   );
 }

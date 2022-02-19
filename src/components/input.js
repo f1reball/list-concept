@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import '../App.css';
+
 function Input(props) {
     const [data, setData] = useState("");
 
@@ -17,8 +19,8 @@ function Input(props) {
 
     return(
         <div>
-            <h1>Enter Text</h1>
-            <form onSubmit={handleSubmit}>
+            <h1>Todo List</h1>
+            <form className="textInput" onSubmit={handleSubmit}>
                 <input type="text" onChange={handleChange} value={data} maxLength='30'></input> 
             </form>
         </div>
