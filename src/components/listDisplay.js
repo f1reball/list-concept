@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashCan } from '@fortawesome/free-regular-svg-icons'
+
 import '../App.css';
 
 function ListDisplay(props) {
@@ -8,7 +11,6 @@ function ListDisplay(props) {
 
 
     function switchStatus(item) {
-        
         if(item.status){
             item.status = false;
         } else {
@@ -35,16 +37,16 @@ function ListDisplay(props) {
 
     useEffect(() => {
         localStorage.setItem("listData", JSON.stringify(props.list));
-    }, [switchStatus]);
+    });
 
 
     return(
         <div className="wrapper">
             <ul>
             {props.list.map((item, index) =>
-                <li key={index} onClick={() => switchStatus(item)} className={item.status ? 'yes' : 'no'}>
+                <li key={index} onClick={() => switchStatus(item)}  className={ item.status ? 'yes noselect' : 'no noselect'}>
                     <h1>{item.text}</h1>
-                    <button onClick={() =>deleteItem(item, index)}>bin</button>
+                    <button onClick={() => deleteItem(item, index)} className="buttonShove"><FontAwesomeIcon icon={faTrashCan} /></button>
                 </li>
             )}
 

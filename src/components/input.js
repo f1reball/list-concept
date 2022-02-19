@@ -19,7 +19,7 @@ function Input(props) {
         <div>
             <h1>Enter Text</h1>
             <form onSubmit={handleSubmit}>
-                <input type="text" onChange={handleChange} value={data}></input> 
+                <input type="text" onChange={handleChange} value={data} maxLength='30'></input> 
             </form>
         </div>
     );
