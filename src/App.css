@@ -7,6 +7,35 @@
   width: 100vw;
 }
 
+.wrapper {
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+ul {
+  width: 300px;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li {
+  border-radius: 5px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding-left: 20px;
+}
+
+li h1 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
 
 .yes {
   background-color: aqua;
@@ -14,4 +43,5 @@
 
 .no {
   background-color: blueviolet;
+  text-decoration: line-through;
 }

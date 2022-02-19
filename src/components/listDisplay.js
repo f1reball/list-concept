@@ -21,20 +21,35 @@ function ListDisplay(props) {
         }
     }
 
+    function deleteItem(item, index) {
+        //console.log(props.list)
+        const newList = props.list.splice(index, 1);
+        console.log(newList);
+        //console.log(index);
+        if (updater) {
+            setUpdater(false);
+        } else {
+            setUpdater(true);
+        }
+    }
+
     useEffect(() => {
         localStorage.setItem("listData", JSON.stringify(props.list));
     }, [switchStatus]);
 
 
     return(
-        <ul>
-        {props.list.map((item, index) =>
-            <li key={index} onClick={() => switchStatus(item, props.list)} className={item.status ? 'yes' : 'no'}>
-                {item.text}
-            </li>
-        )}
+        <div className="wrapper">
+            <ul>
+            {props.list.map((item, index) =>
+                <li key={index} onClick={() => switchStatus(item)} className={item.status ? 'yes' : 'no'}>
+                    <h1>{item.text}</h1>
+                    <button onClick={() =>deleteItem(item, index)}>bin</button>
+                </li>
+            )}
 
-        </ul>
+            </ul>
+        </div>
     );
 }
 
