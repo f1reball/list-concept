@@ -7,6 +7,7 @@ import '../App.css';
 
 function ListDisplay(props) {
 
+    
     const [updater, setUpdater] = useState(true);
 
 
@@ -24,10 +25,8 @@ function ListDisplay(props) {
     }
 
     function deleteItem(item, index) {
-        //console.log(props.list)
-        const newList = props.list.splice(index, 1);
-        console.log(newList);
-        //console.log(index);
+        props.list.splice(index, 1);
+
         if (updater) {
             setUpdater(false);
         } else {
@@ -44,9 +43,12 @@ function ListDisplay(props) {
         <div className="wrapper">
             <ul>
             {props.list.map((item, index) =>
-                <li key={index} onClick={() => switchStatus(item)}  className={ item.status ? 'yes noselect' : 'no noselect'}>
+                <li key={index} className={ item.status ? 'yes noselect' : 'no noselect'}>
+                    <div key={index} className='noselect holder'>
+                        {item.status ? <input type='checkbox' checked={false} readOnly onClick={() => switchStatus(item)}></input> : <input type='checkbox' readOnly checked={true} onClick={() => switchStatus(item)}></input>}
                     <h1>{item.text}</h1>
                     <button onClick={() => deleteItem(item, index)} className="buttonShove"><FontAwesomeIcon icon={faTrashCan} /></button>
+                    </div>
                 </li>
             )}
 

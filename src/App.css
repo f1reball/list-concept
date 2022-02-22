@@ -95,3 +95,11 @@ input{
 h1 {
   font-weight: 100;
 }
+
+.holder {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: 100%;
+}
