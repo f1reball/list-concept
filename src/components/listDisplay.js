@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashCan } from '@fortawesome/free-regular-svg-icons'
-
 import '../App.css';
 
 function ListDisplay(props) {
@@ -43,11 +40,11 @@ function ListDisplay(props) {
         <div className="wrapper">
             <ul>
             {props.list.map((item, index) =>
-                <li key={index} className={ item.status ? 'yes noselect' : 'no noselect'}>
+                <li key={index} className='noselect'>
                     <div key={index} className='noselect holder'>
-                        {item.status ? <input type='checkbox' checked={false} readOnly onClick={() => switchStatus(item)}></input> : <input type='checkbox' readOnly checked={true} onClick={() => switchStatus(item)}></input>}
-                    <h1>{item.text}</h1>
-                    <button onClick={() => deleteItem(item, index)} className="buttonShove"><FontAwesomeIcon icon={faTrashCan} /></button>
+                        {item.status ? <input className='check' type='checkbox' checked={false} readOnly onClick={() => switchStatus(item)}></input> : <input type='checkbox' className='check' readOnly checked={true} onClick={() => switchStatus(item)}></input>}
+                        <h1 className={item.status ? 'todo' : 'completed'}>{item.text}</h1>
+                        <h2 onClick={() => deleteItem(item, index)} className="buttonShove">×</h2>
                     </div>
                 </li>
             )}
